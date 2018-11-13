@@ -1,0 +1,14 @@
+<h1>My Tasks</h1>
+<% @tasks.each do |task| %>
+  <% if task[:completed] == true %>
+    <p> <%= link_to "☑︎ #{task[:title]}" , task_path(task) %>
+    <%= link_to "🗑", task_path(task), method: :delete, data: { confirm: "Delete #{task[:title]}?"} %>
+    </p>
+  <% else %>
+    <p> <%= link_to "☐ #{task[:title]}" , task_path(task) %>
+    <%= link_to "🗑", task_path(task), method: :delete, data: { confirm: "Delete #{task[:title]}?"} %>
+    </p>
+  <% end %>
+<% end %>
+<p>*************************************************</p>
+<p><%= link_to "+ Add a new task", new_task_path %></p>
